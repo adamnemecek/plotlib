@@ -57,7 +57,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_slice(v: &[f64], bins: Bins) -> Histogram {
+    pub fn from_slice(v: &[f64], bins: Bins) -> Self {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -94,7 +94,7 @@ impl Histogram {
         }
         let density_per_bin = bins.iter().map(|&x| f64::from(x) / bin_width).collect();
 
-        Histogram {
+        Self {
             bin_bounds: bounds,
             bin_counts: bins.iter().map(|&x| f64::from(x)).collect(),
             bin_densities: density_per_bin,

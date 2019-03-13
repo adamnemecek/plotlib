@@ -23,7 +23,7 @@ impl Scatter {
             data.push((x, y));
         }
 
-        Scatter {
+        Self {
             data,
             style: PointStyle::new(),
         }

@@ -51,7 +51,7 @@ pub struct Grid {
 
 impl Default for Grid {
     fn default() -> Self {
-        Grid::new(3, 3)
+        Self::new(3, 3)
     }
 }
 
@@ -59,8 +59,8 @@ impl Grid {
     /// Create a new grid with `nx` vertical and `ny` horizontal grid lines
     ///
     /// The default colour is "darkgrey".
-    pub fn new(nx: u32, ny: u32) -> Grid {
-        Grid {
+    pub fn new(nx: u32, ny: u32) -> Self {
+        Self {
             nx,
             ny,
             color: "darkgrey".to_owned(),

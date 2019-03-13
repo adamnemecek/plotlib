@@ -11,8 +11,8 @@ pub struct Range {
 }
 
 impl Range {
-    pub fn new(lower: f64, upper: f64) -> Range {
-        Range { lower, upper }
+    pub fn new(lower: f64, upper: f64) -> Self {
+        Self { lower, upper }
     }
 
     pub(crate) fn is_valid(&self) -> bool {
@@ -29,9 +29,9 @@ pub struct ContinuousAxis {
 
 impl ContinuousAxis {
     /// Constructs a new ContinuousAxis
-    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {
+    pub fn new(lower: f64, upper: f64) -> Self {
         let default_max_ticks = 6;
-        ContinuousAxis {
+        Self {
             range: Range::new(lower, upper),
             ticks: calculate_ticks(lower, upper, default_max_ticks),
             label: "".into(),
@@ -72,8 +72,8 @@ pub struct CategoricalAxis {
 
 impl CategoricalAxis {
     /// Constructs a new ContinuousAxis
-    pub fn new(ticks: &[String]) -> CategoricalAxis {
-        CategoricalAxis {
+    pub fn new(ticks: &[String]) -> Self {
+        Self {
             ticks: ticks.into(),
             label: "".into(),
         }
@@ -107,15 +107,15 @@ struct TickSteps {
 }
 
 impl TickSteps {
-    fn start_at(start: f64) -> TickSteps {
-        let start_options = TickSteps::scaled_steps(start);
+    fn start_at(start: f64) -> Self {
+        let start_options = Self::scaled_steps(start);
         let overflow = start_options[0] * 10.0;
         let curr = start_options
             .iter()
             .skip_while(|&step| step < &start)
             .next();
 
-        TickSteps {
+        Self {
             next: *curr.unwrap_or(&overflow),
         }
     }

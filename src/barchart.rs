@@ -30,7 +30,7 @@ pub struct BarChart {
 
 impl BarChart {
     pub fn new(v: f64) -> Self {
-        BarChart {
+        Self {
             value: v,
             style: BoxStyle::new(),
             label: String::new(),
